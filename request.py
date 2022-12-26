@@ -1,4 +1,4 @@
-from urllib.request import Request, urlopen, HTTPSHandler
+from urllib.request import Request, HTTPSHandler
 from constants import BASE_URL, AUTHORISATION, AUTHORISATION_VALUE
 import json
 
@@ -9,15 +9,3 @@ def handle_request(endpoint) :
 	request.timeout = 5000
 	handler = HTTPSHandler()
 	return json.loads(handler.https_open(request).read().decode("utf-8"))
-
-# Gets all accounts for the given user access token and logs the Name, number of transations and Balance for them
-def print_accounts() :	
-	accounts = handle_request("/accounts")
-	for val in accounts["data"] :
-		id = val["id"]
-		name = val["attributes"]["displayName"]
-		balance = val["attributes"]["balance"]["value"]
-		accountTransations = handle_request("/accounts/{}/transactions".format(id))
-		print("Name: {}, Transactions: {}, Balance: {}".format(name, len(accountTransations["data"]), balance))
-
-print_accounts()

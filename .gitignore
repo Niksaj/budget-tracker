@@ -1,3 +1,10 @@
+# Ignore files in the output directory
+output/*
+
+#
+# Default Python gitignore file contents below
+#
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
