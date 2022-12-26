@@ -8,4 +8,4 @@ A basic Python application for use with the [UP Bank API](https://developer.up.c
 ## Instructions to run
 Create a `.env` file in the root directory of the project with the following entry `UP_API_KEY=$up_key` (replace `$up_key` with your key retrieved from the up website).
 
-Run using `python request.py`.
+Run using `python main.py`. Spreadsheet will be put in the `output` folder.
