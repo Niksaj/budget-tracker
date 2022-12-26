@@ -1,8 +1,12 @@
 from constants import DATE_TIME_FORMAT, EXPORT_DIRECTORY
 from datetime import datetime
 import xlsxwriter
+import os
 
 def write_accounts(accounts) :
+	if not os.path.exists(EXPORT_DIRECTORY) :
+		os.makedirs(EXPORT_DIRECTORY)
+	
 	now = datetime.now();
 	workbook = xlsxwriter.Workbook("{}Account Transactions_{}.xlsx".format(EXPORT_DIRECTORY, now.strftime(DATE_TIME_FORMAT)))
 	for account in accounts :
