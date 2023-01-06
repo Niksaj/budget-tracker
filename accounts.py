@@ -5,7 +5,7 @@ from constants import BASE_URL, PAGE_SIZE
 
 # Gets all transactions for a given account id
 def get_transactions(id, transactions, url) -> list:
-	transactionsResponse = handle_request(url)
+	_, transactionsResponse = handle_request(url)
 	for t in transactionsResponse["data"] :
 		attr = t["attributes"]
 		transaction = Transaction(attr["amount"]["value"], attr["status"], attr["createdAt"], attr["message"])
@@ -16,8 +16,8 @@ def get_transactions(id, transactions, url) -> list:
 	return get_transactions(id, transactions, nextUrl)
 
 # Gets all accounts for the given user access token including transactions
-def get_accounts() -> list:	
-	accountsResponse = handle_request(BASE_URL + "/accounts")
+def get_accounts() -> list:
+	_, accountsResponse = handle_request(BASE_URL + "/accounts")
 	accounts = []
 	for val in accountsResponse["data"] :
 		id = val["id"]
